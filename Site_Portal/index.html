@@ -12,7 +12,7 @@
     
     <style>
         /* =========================================
-           ESTILO VISUAL
+           ESTILO VISUAL (CSS NATIVO)
            ========================================= */
         :root {
             --senac-blue: #004587;
@@ -45,9 +45,13 @@
         img { max-width: 100%; display: block; }
         button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
+        /* Utilitários */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .hidden-section { display: none !important; }
         
+        /* =========================================
+           TELA DE LOGIN
+           ========================================= */
         /* TELA DE LOGIN SIMPLIFICADA */
         #login-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -87,7 +91,9 @@
         }
         .btn-primary:hover { background-color: #d97706; }
 
-        /* NAVBAR */
+        /* =========================================
+           MENU E NAVEGAÇÃO
+           ========================================= */
         .navbar { background-color: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 90; }
         .nav-content { display: flex; justify-content: space-between; align-items: center; height: 80px; }
         .logo-area { display: flex; align-items: center; }
@@ -104,11 +110,14 @@
         .logout-btn { color: #dc2626; font-weight: bold; font-size: 0.875rem; padding: 10px; border: 1px solid #fee2e2; border-radius: 6px; transition: 0.3s; }
         .logout-btn:hover { background-color: #fef2f2; }
 
-        /* HERO & TIMELINE */
+
+        /* =========================================
+           ESTILOS GERAIS
+           ========================================= */
         .hero { background: linear-gradient(to right, var(--senac-blue), var(--senac-dark-blue)); color: white; padding: 60px 0; text-align: center; }
         .hero h1 { font-size: 2.25rem; margin-bottom: 10px; }
         
-        /* NOVO ESTILO: BOAS VINDAS */
+        /* --- ESTILOS BOAS-VINDAS --- */
         .welcome-section {
             display: flex;
             justify-content: center;
@@ -123,7 +132,6 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
             padding: 40px;
             width: 100%;
-            /* Card maior */
             max-width: 1060px; 
             text-align: left;
         }
@@ -144,23 +152,18 @@
             color: var(--senac-dark-blue); 
             font-weight: 900;
         }
-        /* Adiciona um toque Senac na base do card */
         .welcome-card::after {
             content: '';
             display: block;
             height: 10px;
             background-color: var(--senac-dark-blue);
-            /* CORREÇÃO: Aplica o arredondamento inferior. Ajustei a margem para evitar quebra no mobile. */
             border-radius: 0 0 16px 16px; 
             margin: 40px -40px -40px -40px; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.1) inset;
         }
-        
-        /* ESTILOS DA TIMELINE */
-        .timeline-container { 
-            position: relative; 
-            padding: 40px 0; 
-        }
+
+        /* --- ESTILOS CRONOGRAMA (TIMELINE) --- */
+        .timeline-container { position: relative; padding: 40px 0; }
         .timeline-line::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; background: #e2e8f0; transform: translateX(-50%); z-index: 0; }
         .phase-badge { position: relative; z-index: 10; margin-bottom: 50px; text-align: center; }
         .phase-badge span { display: inline-block; padding: 8px 24px; border-radius: 50px; font-weight: bold; font-size: 0.875rem; text-transform: uppercase; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 4px solid var(--bg-color); color: white; }
@@ -217,72 +220,12 @@
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
         }
-        
         /* Posicionamento Ajustado para as EXTREMIDADES LATERAIS (Pixels Fixos) */
-        /* A referência do posicionamento foi alterada para um pixel fixo para evitar quebras de zoom */
-        
-        /* Imagem 1: Decreto N° 11.479 - Extremo esquerdo, entre o passo 3 e 4 */
-        .timeline-art.art-1 {
-            top: 250px; 
-            left: -300px; 
-            transform: rotate(-7deg); 
-        }
-        
-        /* Imagem 2: Lei n° 10.097 - Extremo direito, entre as fases 1 e 2 */
-        .timeline-art.art-2 {
-            top: 600px; 
-            right: -300px; 
-            left: auto; 
-            transform: rotate(10deg); 
-        }
+        .timeline-art.art-1 { top: 250px; left: -300px; transform: rotate(-7deg); }
+        .timeline-art.art-2 { top: 600px; right: -300px; left: auto; transform: rotate(10deg); }
+        .timeline-art.art-3 { top: 1100px; left: -300px; transform: rotate(-4deg); }
 
-        /* Imagem 3: Portaria MTE N° 3.872 - Extremo esquerdo, entre o passo 11 e 12 */
-        .timeline-art.art-3 {
-            top: 1100px; 
-            left: -300px; 
-            transform: rotate(-4deg);
-        }
-
-        /* Adaptação para Telas Largas e Média */
-        @media (max-width: 1400px) {
-            .timeline-art {
-                width: 200px;
-                max-width: 20vw;
-            }
-            .timeline-art.art-1 { left: -250px; }
-            .timeline-art.art-2 { right: -250px; }
-            .timeline-art.art-3 { left: -250px; }
-        }
-
-        @media (max-width: 1000px) {
-            .timeline-art { 
-                display: none; 
-            }
-        }
-
-        @media (max-width: 768px) {
-             /* Mobile: Redefine margem do welcome-section para não ter overflow */
-            .welcome-section {
-                margin: 0; 
-                padding: 40px 10px;
-            }
-            .welcome-card::after {
-                /* Ajusta margem para não quebrar a borda do card no mobile */
-                margin: 40px -20px -20px -20px;
-                border-radius: 0 0 16px 16px;
-            }
-
-            .timeline-line::before { left: 30px; }
-            .timeline-step { flex-direction: column; align-items: flex-start; margin-left: 0; }
-            .empty-space { display: none; }
-            .step-content { width: 100%; margin-left: 60px; margin-top: -40px; }
-            .border-right-blue, .border-right-orange, .border-right-green { text-align: left; border-right: none; border-left: 4px solid; }
-            .border-right-blue { border-left-color: var(--senac-blue); }
-            .border-right-orange { border-left-color: var(--senac-orange); }
-            .border-right-green { border-left-color: var(--senac-green); }
-        }
-
-        /* DOCS & EQUIPE */
+        /* --- DOCS & EQUIPE --- */
         .search-bar-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
         .search-input { padding: 10px 20px; border: 1px solid #ccc; border-radius: 50px; width: 300px; outline: none; }
         .search-input:focus { border-color: var(--senac-orange); }
@@ -308,7 +251,7 @@
         .member-contact a:hover { color: var(--senac-blue); }
         .member-contact i { width: 20px; text-align: center; margin-right: 12px; } 
 
-        /* FOOTER & MOBILE */
+        /* --- FOOTER & MOBILE --- */
         footer { background-color: var(--senac-dark-blue); color: white; padding: 50px 0 20px; margin-top: auto; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
         .footer-col h4 { font-size: 1.125rem; font-weight: bold; margin-bottom: 15px; }
@@ -317,6 +260,42 @@
         .mobile-menu-btn { display: none; font-size: 24px; color: #6b7280; }
         .mobile-menu-dropdown { display: none; background: #f9fafb; border-top: 1px solid #eee; }
         .mobile-link { display: block; padding: 12px 20px; color: var(--senac-blue); font-weight: 600; border-bottom: 1px solid #eee; width: 100%; text-align: left;}
+
+        /* MEDIA QUERIES */
+        @media (max-width: 1400px) {
+            .timeline-art {
+                width: 200px;
+                max-width: 20vw;
+            }
+            .timeline-art.art-1 { left: -250px; }
+            .timeline-art.art-2 { right: -250px; }
+            .timeline-art.art-3 { left: -250px; }
+        }
+
+        @media (max-width: 1000px) {
+            .timeline-art { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile Nav */
+            .nav-links, .blackboard-btn, .logo-text, .logout-btn { display: none; }
+            .navbar-actions { display: none; } /* Esconde ações no mobile para usar o menu dropdown */
+            .mobile-menu-btn { display: block; }
+
+            /* Mobile Timeline */
+            .timeline-line::before { left: 30px; }
+            .timeline-step { flex-direction: column; align-items: flex-start; margin-left: 0; }
+            .empty-space { display: none; }
+            .step-content { width: 100%; margin-left: 60px; margin-top: -40px; }
+            .border-right-blue, .border-right-orange, .border-right-green { text-align: left; border-right: none; border-left: 4px solid; }
+            .border-right-blue { border-left-color: var(--senac-blue); }
+            .border-right-orange { border-left-color: var(--senac-orange); }
+            .border-right-green { border-left-color: var(--senac-green); }
+
+            /* Mobile Welcome Card fix */
+            .welcome-section { margin: 0; padding: 40px 10px; }
+            .welcome-card::after { margin: 40px -20px -20px -20px; border-radius: 0 0 16px 16px; }
+        }
     </style>
 </head>
 <body id="main-body" class="locked">
@@ -521,6 +500,13 @@
                     </div>
                 </div>
                 
+                <div style="background-color: #fff7ed; border-left: 4px solid #F68B1F; padding: 15px; margin-bottom: 30px; border-radius: 4px;">
+                    <h4 style="margin: 0 0 5px 0; color: #9a3412; font-size: 1rem;">⚠️ Modo Offline Ativado</h4>
+                    <p style="margin: 0; font-size: 0.9rem; color: #c2410c;">
+                        Certifique-se de que a pasta <strong>"documentos"</strong> esteja junto deste arquivo e contenha os arquivos com os nomes exatos abaixo.
+                    </p>
+                </div>
+
                 <div class="doc-section-title"><i class="fas fa-book-reader" style="color: var(--senac-blue); margin-right: 10px;"></i> Guias e Manuais</div>
                 <div class="grid-docs">
                     <div class="doc-card">
@@ -559,7 +545,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="doc-card">
+                     <div class="doc-card">
                         <div class="doc-header">
                             <div class="icon-box ib-blue"><i class="fas fa-car"></i></div>
                             <div class="doc-info">
@@ -613,28 +599,40 @@
                             <div class="avatar">AP</div>
                             <div class="member-info">
                                 <h3>Ana Paula</h3><div class="member-role">Analista Pleno</div>
-                                <div class="member-contact"><a href="mailto:anapaula.duarte@pr.senac.br"><i class="fas fa-envelope"></i> <i class="fab fa-microsoft"></i> anapaula.duarte@pr.senac.br</a><a href="https://wa.me/554133145814" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> (41) 3314-5814</a></div>
+                                <div class="member-contact">
+                                    <a href="mailto:anapaula.duarte@pr.senac.br"><i class="fas fa-envelope"></i> anapaula.duarte@pr.senac.br</a>
+                                    <a href="https://wa.me/554133145814" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> (41) 3314-5814</a>
+                                </div>
                             </div>
                         </div>
                         <div class="member-card">
                             <div class="avatar">B</div>
                             <div class="member-info">
                                 <h3>Bianca</h3><div class="member-role">Analista Pedagógica</div>
-                                <div class="member-contact"><a href="mailto:bianca.aresta@pr.senac.br"><i class="fas fa-envelope"></i> <i class="fab fa-microsoft"></i> bianca.aresta@pr.senac.br</a><a href="https://wa.me/554133145875" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> (41) 3314-5875</a></div>
+                                <div class="member-contact">
+                                    <a href="mailto:bianca.aresta@pr.senac.br"><i class="fas fa-envelope"></i> bianca.aresta@pr.senac.br</a>
+                                    <a href="https://wa.me/554133145875" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> (41) 3314-5875</a>
+                                </div>
                             </div>
                         </div>
                         <div class="member-card">
                             <div class="avatar">B</div>
                             <div class="member-info">
                                 <h3>Bruna</h3><div class="member-role">Analista Pedagógica</div>
-                                <div class="member-contact"><a href="mailto:bruna.cunha@pr.senac.br"><i class="fas fa-envelope"></i> <i class="fab fa-microsoft"></i> bruna.cunha@pr.senac.br</a><a href="https://wa.me/554133145816" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> (41) 3314-5816</a></div>
+                                <div class="member-contact">
+                                    <a href="mailto:bruna.cunha@pr.senac.br"><i class="fas fa-envelope"></i> bruna.cunha@pr.senac.br</a>
+                                    <a href="https://wa.me/554133145816" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> (41) 3314-5816</a>
+                                </div>
                             </div>
                         </div>
                         <div class="member-card">
                             <div class="avatar">M</div>
                             <div class="member-info">
                                 <h3>Mariana</h3><div class="member-role">Analista Pedagógica</div>
-                                <div class="member-contact"><a href="mailto:mariana.mello@pr.senac.br"><i class="fas fa-envelope"></i> <i class="fab fa-microsoft"></i> mariana.mello@pr.senac.br</a><a href="https://wa.me/554133145858" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> (41) 3314-5858</a></div>
+                                <div class="member-contact">
+                                    <a href="mailto:mariana.mello@pr.senac.br"><i class="fas fa-envelope"></i> mariana.mello@pr.senac.br</a>
+                                    <a href="https://wa.me/554133145858" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> (41) 3314-5858</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -647,21 +645,29 @@
                             <div class="avatar avatar-gray">C</div>
                             <div class="member-info">
                                 <h3>Cristina</h3><div class="member-role" style="color: #6b7280;">Assistente Administrativo</div>
-                                <div class="member-contact"><a href="mailto:cristina.maciel@pr.senac.br"><i class="fas fa-envelope"></i> <i class="fab fa-microsoft"></i> cristina.maciel@pr.senac.br</a><a href="https://wa.me/554133145840" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> (41) 3314-5840</a></div>
+                                <div class="member-contact">
+                                    <a href="mailto:cristina.maciel@pr.senac.br"><i class="fas fa-envelope"></i> cristina.maciel@pr.senac.br</a>
+                                    <a href="https://wa.me/554133145840" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> (41) 3314-5840</a>
+                                </div>
                             </div>
                         </div>
                         <div class="member-card">
                             <div class="avatar avatar-gray">L</div>
                             <div class="member-info">
                                 <h3>Leo</h3><div class="member-role" style="color: #6b7280;">Assistente Administrativo</div>
-                                <div class="member-contact"><a href="mailto:leo.santos@pr.senac.br"><i class="fas fa-envelope"></i> <i class="fab fa-microsoft"></i> leo.santos@pr.senac.br</a><a href="https://wa.me/554133145818" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> (41) 3314-5818</a></div>
+                                <div class="member-contact">
+                                    <a href="mailto:leo.santos@pr.senac.br"><i class="fas fa-envelope"></i> leo.santos@pr.senac.br</a>
+                                    <a href="https://wa.me/554133145818" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> (41) 3314-5818</a>
+                                </div>
                             </div>
                         </div>
                         <div class="member-card">
                             <div class="avatar avatar-gray">N</div>
                             <div class="member-info">
                                 <h3>Nathalia</h3><div class="member-role" style="color: #6b7280;">Auxiliar Administrativa</div>
-                                <div class="member-contact"><a href="mailto:nathalia@pr.senac.br"><i class="fas fa-envelope"></i> <i class="fab fa-microsoft"></i> nathalia@pr.senac.br</a></div>
+                                <div class="member-contact">
+                                    <a href="mailto:nathalia@pr.senac.br"><i class="fas fa-envelope"></i> nathalia@pr.senac.br</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -706,7 +712,7 @@
         function checkPassword() {
             const digitado = passwordInput.value;
             
-            if (digitado === SENHA_CORRETA) {
+            if (digitado.toUpperCase() === SENHA_CORRETA.toUpperCase()) {
                 // Senha correta
                 localStorage.setItem('senac_auth', 'true'); // Salva login
                 showContent();
@@ -742,7 +748,6 @@
         }
         
         function logout() {
-            // Nota: O prompt de confirm() não é visível em iframes, mas fazemos o logout.
             hideContent();
             location.reload();
         }
